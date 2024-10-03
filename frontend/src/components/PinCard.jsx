@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PinCard = ({ pin }) => {
   return (
-    <div className="p-2 sm:w-1/2 md:w-1/3 lg:w-1/4">
+    <div className="p-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
       <div className="bg-white overflow-hidden shadow rounded-lg relative group cursor-pointer">
         <img
           src={pin.image.url}
