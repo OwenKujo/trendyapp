@@ -7,6 +7,7 @@ import path from "path";
 
 dotenv.config();
 
+// Configure Cloudinary
 cloudinary.v2.config({
   cloud_name: process.env.Cloud_Name,
   api_key: process.env.Cloud_Api,
@@ -15,7 +16,8 @@ cloudinary.v2.config({
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+// Set default port if not specified in environment variables
+const port = process.env.PORT || 5000;
 
 // Using middlewares
 app.use(express.json());
@@ -29,15 +31,26 @@ import pinRoutes from "./routes/pinRoutes.js";
 app.use("/api/user", userRoutes);
 app.use("/api/pin", pinRoutes);
 
+// Serve static files from the frontend dist folder
 const __dirname = path.resolve();
-
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
+// Serve the main index.html file for all other requests
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-  connectDb();
-});
+// Start the server and connect to the database
+const startServer = async () => {
+  try {
+    await connectDb(); // Ensure DB connection before starting the server
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to the database", error);
+    process.exit(1); // Exit the process if the database connection fails
+  }
+};
+
+startServer();
