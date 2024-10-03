@@ -15,17 +15,17 @@ cloudinary.v2.config({
 
 const app = express();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
-//using middlewares
+// Using middlewares
 app.use(express.json());
 app.use(cookieParser());
 
-// importing routes
+// Importing routes
 import userRoutes from "./routes/userRoutes.js";
 import pinRoutes from "./routes/pinRoutes.js";
 
-// using routes
+// Using routes
 app.use("/api/user", userRoutes);
 app.use("/api/pin", pinRoutes);
 
