@@ -1,6 +1,6 @@
 // controllers/pinControllers.js
 
-import { Pin } from '../models/Pin.js'; // Adjust the import path
+import { Pin } from '../models/pinModel.js'; // Adjust the import path
 
 export const createPin = async (req, res) => {
   try {
