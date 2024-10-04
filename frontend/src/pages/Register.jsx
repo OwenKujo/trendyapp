@@ -16,27 +16,20 @@ const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // Update the registerUser function to navigate to PreScreen after registration
-    registerUser(name, email, password, (success) => {
-      if (success) {
-        navigate("/pre-screen"); // Navigate to PreScreen after successful registration
-      }
-      fetchPins();
-    });
+    registerUser(name, email, password, navigate, fetchPins);
   };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-4">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1200px-H%26M-Logo.svg.png"
-            alt="HM"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pinterest-logo.png/600px-Pinterest-logo.png"
+            alt="Pinterest"
             className="h-12"
           />
         </div>
         <h2 className="text-2xl font-semibold text-center mb-6">
-          Register to H&M Trend feed
+          Register to pinterest
         </h2>
         <form onSubmit={submitHandler}>
           <div className="mb-4">

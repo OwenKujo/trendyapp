@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import PreScreen from "./pages/PreScreen"; // Import PreScreen component
 import { UserData } from "./context/UserContext";
 import { Loading } from "./components/Loading";
 import Navbar from "./components/Navbar";
@@ -38,11 +37,7 @@ const App = () => {
             <Route path="/login" element={isAuth ? <Home /> : <Login />} />
             <Route
               path="/register"
-              element={isAuth ? <PreScreen /> : <Register />}
-            />
-            <Route
-              path="/pre-screen"
-              element={isAuth ? <PreScreen /> : <Login />} // Add PreScreen route
+              element={isAuth ? <Home /> : <Register />}
             />
           </Routes>
         </BrowserRouter>
