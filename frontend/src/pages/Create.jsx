@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     inputRef.current.click();
@@ -14,6 +15,8 @@ const Create = () => {
   const [filePrev, setFilePrev] = useState("");
   const [title, setTitle] = useState("");
   const [pin, setPin] = useState("");
+  const [link, setLink] = useState(""); // Keep it as a string
+  const [tags, setTags] = useState([]); // New state for tags
   const { addPin } = PinData();
 
   const changeFileHandler = (e) => {
@@ -28,25 +31,48 @@ const Create = () => {
     };
   };
 
-  const navigate = useNavigate();
-
-  const addPinHandler = (e) => {
+  const addPinHandler = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-
     formData.append("title", title);
     formData.append("pin", pin);
     formData.append("file", file);
+    formData.append("link", link);
+    formData.append("tags", JSON.stringify(tags)); // Include tags
 
-    addPin(formData, setFilePrev, setFile, setTitle, setPin, navigate);
+    try {
+      const response = await addPin(formData);
+      if (response && response._id) {
+        navigate(`/pin/${response._id}`);
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error adding pin:", error);
+      navigate("/");
+    }
   };
+
+  const addTag = (tag) => {
+    if (tag && !tags.includes(tag)) {
+      setTags([...tags, tag]);
+    }
+  };
+
+  const handleAddTag = (e) => {
+    if (e.key === 'Enter') {
+      addTag(e.target.value);
+      e.target.value = ''; // Clear the input field after adding a tag
+    }
+  };
+
   return (
     <div>
       <div className="flex flex-wrap justify-center items-center gap-2 mt-10">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center justify-center w-80 h-auto p-6 bg-white rounded-lg shadow-lg">
-            {filePrev && <img src={filePrev} alt="" />}
+            {filePrev && <img src={filePrev} alt="Preview" />}
             <div
               className="flex flex-col items-center justify-center h-full cursor-pointer"
               onClick={handleClick}
@@ -64,7 +90,7 @@ const Create = () => {
               <p className="text-gray-500">Choose a file</p>
             </div>
             <p className="mt-4 text-sm text-gray-400">
-              we recomment using high quality .jpg files but less than 10mb
+              We recommend using high-quality .jpg files but less than 10MB
             </p>
           </div>
         </div>
@@ -96,7 +122,7 @@ const Create = () => {
                   htmlFor="pin"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Pin
+                  Description
                 </label>
                 <input
                   type="text"
@@ -106,6 +132,47 @@ const Create = () => {
                   onChange={(e) => setPin(e.target.value)}
                   required
                 />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="link"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Link
+                </label>
+                <input
+                  type="url"
+                  id="link"
+                  className="common-input"
+                  value={link}
+                  onChange={(e) => setLink(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="tags"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Tags (Press Enter to add)
+                </label>
+                <input
+                  type="text"
+                  id="tags"
+                  className="common-input"
+                  onKeyPress={handleAddTag}
+                  placeholder="Add a tag"
+                />
+                <div className="mt-2 flex flex-wrap">
+                  {tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center bg-gray-200 rounded-full px-3 py-1 text-sm text-gray-800 mr-2"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
               <button className="common-btn">Add+</button>
             </form>

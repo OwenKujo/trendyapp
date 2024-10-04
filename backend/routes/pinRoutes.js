@@ -1,3 +1,5 @@
+// routes/pinRoutes.js
+
 import express from "express";
 import { isAuth } from "../middlewares/isAuth.js";
 import uploadFile from "../middlewares/multer.js";

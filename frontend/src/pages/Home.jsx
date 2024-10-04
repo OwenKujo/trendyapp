@@ -5,6 +5,19 @@ import PinCard from "../components/PinCard";
 
 const Home = () => {
   const { pins, loading } = PinData();
+
+  // Function to shuffle an array
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  // Shuffle pins if they exist
+  const shuffledPins = pins ? shuffleArray([...pins]) : [];
+
   return (
     <div>
       {loading ? (
@@ -12,12 +25,16 @@ const Home = () => {
       ) : (
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
-            {/* Use a responsive grid layout */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {pins && pins.length > 0 ? (
-                pins.map((e) => <PinCard key={e._id} pin={e} />) // Ensure unique keys
+            {/* Updated gap for less spacing */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+              {shuffledPins.length > 0 ? (
+                shuffledPins.map((e) => (
+                  <div className="flex justify-center" key={e._id}>
+                    <PinCard pin={e} />
+                  </div>
+                ))
               ) : (
-                <p>No Post Yet</p>
+                <p>No Posts Yet</p>
               )}
             </div>
           </div>
