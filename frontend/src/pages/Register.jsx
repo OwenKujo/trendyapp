@@ -23,13 +23,13 @@ const Register = () => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-4">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pinterest-logo.png/600px-Pinterest-logo.png"
-            alt="Pinterest"
+            src="H&Mlogo.png"
+            alt="H&M"
             className="h-12"
           />
         </div>
         <h2 className="text-2xl font-semibold text-center mb-6">
-          Register to pinterest
+          Register to Trend feed
         </h2>
         <form onSubmit={submitHandler}>
           <div className="mb-4">
