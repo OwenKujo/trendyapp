@@ -22,13 +22,13 @@ const Login = () => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-4">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1200px-H%26M-Logo.svg.png"
-            alt="HM"
-            className="h-12"
+            src="/TrendyLOGOver.png"
+            alt="Trendy"
+            className="h-20"
           />
         </div>
         <h2 className="text-2xl font-semibold text-center mb-6">
-          Log in to H&M Trend feed
+          Log in to Trendy
         </h2>
         <form onSubmit={submitHandler}>
           <div className="mb-4">
@@ -81,7 +81,7 @@ const Login = () => {
 
           <div className="mt-4 text-center text-sm">
             <span>
-              Not on Trend feed yet?
+              Not on Trendy yet?
               <Link
                 to="/register"
                 className="font-medium text-pinterest hover:underline"

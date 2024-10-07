@@ -14,7 +14,7 @@ const PinCard = ({ pin }) => {
           <div className="flex flex-col justify-center items-center gap-2">
             <Link
               to={`/pin/${pin._id}`}
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             >
               View Post
             </Link>

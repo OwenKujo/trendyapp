@@ -9,13 +9,13 @@ const Navbar = ({ user }) => {
         {/* Logo Section */}
         <Link to="/" className="flex items-center">
           <img
-            src="/H&Mlogo.png"
+            src="/TrendyLOGOhor.png"
             alt="Logo"
-            width={50} 
-            height={50} 
+            width={150} 
+            height={150} 
             className="'hover:bg-gray-300 p-2 rounded_full cursor-pointer'"
           />
-          <span className="text-red-600 text-l font-bold rounded-full hidden md:block">Trend Feed</span>
+          
         </Link>
         <Link to="/" className="bg-black text-white p-2 px-4 rounded-full">
             Home

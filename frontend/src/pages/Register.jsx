@@ -23,13 +23,13 @@ const Register = () => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-4">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1200px-H%26M-Logo.svg.png"
-            alt="H&M"
-            className="h-12"
+            src="/TrendyLOGOver.png"
+            alt="Trendy"
+            className="h-20"
           />
         </div>
         <h2 className="text-2xl font-semibold text-center mb-6">
-          Register to Trend feed
+          Register to Trendy
         </h2>
         <form onSubmit={submitHandler}>
           <div className="mb-4">

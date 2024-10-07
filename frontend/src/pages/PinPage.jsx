@@ -107,7 +107,7 @@ const PinPage = ({ user }) => {
                       </button>
                       <button
                         onClick={deletePinHandler}
-                        className="bg-red-500 text-white py-1 px-3 rounded"
+                        className="bg-orange-500 text-white py-1 px-3 rounded"
                       >
                         <MdDelete />
                       </button>
@@ -136,7 +136,7 @@ const PinPage = ({ user }) => {
 
                 {edit && (
                   <button
-                    className="bg-red-500 text-white py-1 px-3 mt-2 mb-2 w-1/2 md:w-1/4"
+                    className="bg-orange-500 text-white py-1 px-3 mt-2 mb-2 w-1/2 md:w-1/4"
                     onClick={updateHandler}
                   >
                     Update
@@ -200,7 +200,7 @@ const PinPage = ({ user }) => {
 
                     <button
                       type="submit"
-                      className="ml-2 bg-red-500 px-4 py-2 rounded-md text-white"
+                      className="ml-2 bg-orange-500 px-4 py-2 rounded-md text-white"
                     >
                       Add+
                     </button>
@@ -228,7 +228,7 @@ const PinPage = ({ user }) => {
                           {e.user === user._id && (
                             <button
                               onClick={() => deleteCommentHandler(e._id)}
-                              className="bg-red-500 text-white py-1 px-3 rounded"
+                              className="bg-orange-500 text-white py-1 px-3 rounded"
                             >
                               <MdDelete />
                             </button>
