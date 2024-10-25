@@ -15,7 +15,7 @@ const Home = () => {
           <div className="px-4 py-6 sm:px-0">
             {/* Updated gap for less spacing */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-              {pins.length > 0 ? (
+              {pins && pins.length > 0 ? (
                 pins.map((e) => (
                   <div className="flex justify-center" key={e._id}>
                     <PinCard pin={e} />
