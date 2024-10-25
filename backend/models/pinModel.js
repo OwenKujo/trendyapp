@@ -16,7 +16,7 @@ const pinSchema = new mongoose.Schema({
     url: String,
   },
   link: {
-    type: String, // Fixed type to String
+    type: String,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

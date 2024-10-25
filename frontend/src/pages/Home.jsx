@@ -2,31 +2,36 @@ import React from "react";
 import { PinData } from "../context/PinContext";
 import { Loading } from "../components/Loading";
 import PinCard from "../components/PinCard";
+import Masonry from 'react-masonry-css';
+import "../App.css";
 
 const Home = () => {
   const { pins, loading } = PinData();
 
+  // Define breakpoint columns for the masonry layout
+  const breakpointColumnsObj = {
+    default: 4,  // 4 columns by default
+    1100: 3,     // 3 columns at 1100px
+    700: 2,      // 2 columns at 700px
+    500: 1,      // 1 column at 500px
+  };
+
   return (
-    <div>
+    <div className="p-4">
       {loading ? (
         <Loading />
       ) : (
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            {/* Updated gap for less spacing */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-              {pins && pins.length > 0 ? (
-                pins.map((e) => (
-                  <div className="flex justify-center" key={e._id}>
-                    <PinCard pin={e} />
-                  </div>
-                ))
-              ) : (
-                <p>No Posts Yet</p>
-              )}
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid" // default Masonry CSS
+          columnClassName="my-masonry-grid_column"
+        >
+          {pins.map((pin) => (
+            <div key={pin._id}>
+              <PinCard pin={pin} />
             </div>
-          </div>
-        </div>
+          ))}
+        </Masonry>
       )}
     </div>
   );

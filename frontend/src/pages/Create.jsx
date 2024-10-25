@@ -56,14 +56,15 @@ const Create = () => {
 
   const addTag = (tag) => {
     if (tag && !tags.includes(tag)) {
-      setTags([...tags, tag]);
+      setTags((prevTags) => [...prevTags, tag]); // Use the previous state to avoid stale closure
     }
   };
-
+  
   const handleAddTag = (e) => {
-    if (e.key === 'Enter') {
-      addTag(e.target.value);
-      e.target.value = ''; // Clear the input field after adding a tag
+    if (e.key === 'Enter' && e.target.value.trim()) {
+      const newTags = e.target.value.trim().split(" "); // Split by space
+      newTags.forEach((tag) => addTag(tag)); // Add each tag
+      e.target.value = ''; // Clear the input field after adding tags
     }
   };
 
@@ -134,22 +135,22 @@ const Create = () => {
                 />
               </div>
               <div className="mb-4">
-                <label
-                  htmlFor="link"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Link
-                </label>
-                <input
-                  type="url"
-                  id="link"
-                  className="common-input"
-                  value={link}
-                  onChange={(e) => setLink(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="mb-4">
+              <label
+                htmlFor="link"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Link
+              </label>
+              <input
+                type="url"
+                id="pin"
+                className="common-input"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+                placeholder="Optional"
+              />
+            </div>
+                <div className="mb-4">
                 <label
                   htmlFor="tags"
                   className="block text-sm font-medium text-gray-700"

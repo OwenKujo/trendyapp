@@ -4,8 +4,8 @@ import { HiSearch, HiBell, HiChat } from "react-icons/hi";
 
 const Navbar = ({ user }) => {
   return (
-    <div className="bg-white shadow-md">
-      <div className="flex gap-3 md:gap-2 items-center p-5">
+    <div className="bg-white shadow-md fixed top-0 left-0 w-full z-50"> {/* Fixed the navbar at top */}
+      <div className="flex gap-3 md:gap-2 items-center p-5 max-w-screen-xl mx-auto"> {/* Center the content */}
         {/* Logo Section */}
         <Link to="/" className="flex items-center">
           <img
@@ -15,11 +15,11 @@ const Navbar = ({ user }) => {
             height={150} 
             className="'hover:bg-gray-300 p-2 rounded_full cursor-pointer'"
           />
-          
         </Link>
         <Link to="/" className="bg-black text-white p-2 px-4 rounded-full">
-            Home
-          </Link>
+          Home
+        </Link>
+
         {/* Search Bar */}
         <div className="bg-[#e9e9e9] p-3 gap-3 items-center rounded-full w-full hidden md:flex">
           <HiSearch className="text-[25px] text-gray-500" />

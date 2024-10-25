@@ -180,7 +180,7 @@ const PinPage = ({ user }) => {
                   onClick={navigateToLink}
                   className="bg-gray-950 text-white py-2 px-4 rounded mt-4 mb-4"
                 >
-                  ADD TO BAG
+                  GO TO LINK
                 </button>
 
                 <div className="flex items-center mt-4">
