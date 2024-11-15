@@ -35,7 +35,7 @@ const Register = () => {
           <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 text-left"
             >
               Name
             </label>
@@ -51,7 +51,7 @@ const Register = () => {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 text-left"
             >
               Email
             </label>
@@ -67,7 +67,7 @@ const Register = () => {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 text-left"
             >
               Password
             </label>
